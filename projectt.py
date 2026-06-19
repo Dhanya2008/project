@@ -1,4 +1,6 @@
 print("City Central Library")
+
+#Constructor
 class Data:
     def __init__(self):
         name=input("Enter your name: ")
@@ -6,9 +8,13 @@ class Data:
         self.name=name
         self.phno=phno
     def display(self):
-            print("Welcome to our library,",self.name,"\nLet curiosity lead the way")
+            print("Welcome to our library,",self.name)
+            print("Let you curiosity lead the way !!")
 d1=Data()
 d1.display()
+
+
+#Single inheritance
 
 class Books:
     def preference(self):
@@ -87,6 +93,10 @@ T.preference()
 T.Story()
 T.Novel()
 T.Educational()
+
+ 
+#tuple
+
 customers=("Dhanya","Nitin","Aadya")
 c=input("Have you already been here? ")
 if c=="Yes":
@@ -117,6 +127,35 @@ if dob>2005:
     print("Your monthly library subscription is ",ss)
 else:
     print("Your monthly library subscription is: ",s)
+    
+    
+#overriding
+
+class Lan:
+    def new(self,c):
+        self.c=c
+        print("'''''''''''''''''''''''''''''''''''''''''''")
+        print("Launching Soon....")
+        print("New launch in Stories - ",c)
+class Nov(Lan):
+    def new(self,c):
+        self.c=c
+        print("New lanuch in Novels - ",c)
+class Eduu(Lan):
+    def new(self,c):
+        self.c=c
+        print("New launch in Educational - ",c)
+        print("'''''''''''''''''''''''''''''''''''''''''''")
+l=Lan()
+l.new("Classics")
+n=Nov()
+n.new("Horror")
+e=Eduu()
+e.new("Skills")
+
+
+#abstration
+
 from abc import ABC
 class fair(ABC):
     def lib(self):
@@ -130,7 +169,8 @@ class entry(fair):
     def lib(self):
         print("Free Entry for all !!")
         print("-------------------------------------------------------------------------------------------")
-        print("Thank You for Visiting Our Library! Vist Again!")
+        print("Thank You for Visiting Our Library!!")
+        print("Visit Again!!")
 f=fair()
 f.lib()
 t=time()  
