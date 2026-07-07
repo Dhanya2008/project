@@ -1,4 +1,4 @@
-print("Trinay Hospital......","\nYour Health is Our Priority","\n....................")
+print("TRINAY HOSPITAL......")
 
 #constructor
 #error handling
@@ -29,8 +29,8 @@ n1.display()
  # polymorphism-overriding
 class Patient:
     def condition(self):
-        print("Treatment for the patient")
-    def consult(self):
+        print("Treatment of the patient...")
+    def consult(self):    
         specialist=input("Do you want to consult with a specialist for your treatment ? ")
         self.specialist=specialist
         if self.specialist=="Yes":
@@ -66,7 +66,7 @@ class Treatment1(Patient):
 class Treatment2(Patient):
     def condition(self):
         if self.patient_condition=="Moderate":
-            print("As you are in moderate condition, you will be admitted for further observation and treatment..")
+            print("As you are in moderate condition, you will be admitted..")
             if self.cause_of_admission=="Fever" or self.cause_of_admission=="Cold" or self.cause_of_admission=="Cough" or self.cause_of_admission=="Body pain":
                print("You are affected with viral fever..You will be admitted for further observation and treatment..","\nObservation of patient....","\n You are advised to stay in the hospital for 2-3 days and take the prescribed medicines on time..","\n You will be alright soon..") 
             elif self.cause_of_admission=="Injury":
@@ -147,34 +147,79 @@ if hos=="Yes":
         print("Thank You")
 else:
     print("No special pass is provided for the patient.")
-    print("Thank You")
+    print("Thank You","\n----------------------------------------------------")
     
-#Adding patients to the ward    
-#abstraction
-from abc import ABC
-class Hospital(ABC):
-    def patients(self):
-        total_patients=0
-        print("----------------------------------------------------")
-        print("Adding patients to the ward by the hospital staff...")
-        self.total_patients=total_patients
-        while self.total_patients<=4:
-            patient_id=input("Enter the patient ID: ")
-            self.patient_id=patient_id
-            self.total_patients+=1
-            print(f"Patient added: {self.patient_id}")
-            print(f"Total patients allowed in the ward: {self.total_patients}")
-class Ward(Hospital):
-    def patients(self):
-        super().patients()
-        print("All patients have been added to the ward.")
-h=Ward()
-h.patients()
+    
+#discharge bill
+#encapsulation(getter setter)
+print("Discharge of the patient...(by the hospital staff)")
+class Discharge:
+    def __init__(self):
+        self.__patient_id = ""
+        self.__patient_name = ""
+        self.__age =0
+        self.__disease = ""
+        self.__date_admitted = ""
+        self.__date_discharged = ""
+        self.__bill_amount = 0
+    def set_patient_id(self, patient_id):
+        self.__patient_id = patient_id
+    def set_patient_name(self, patient_name):
+        self.__patient_name = patient_name
+    def set_age(self, age):
+        self.__age = age
+    def set_disease(self, disease):
+        self.__disease = disease
+    def set_date_admitted(self, date):
+        self.__date_admitted = date
+    def set_date_discharged(self, date):
+        self.__date_discharged = date
+    def set_bill_amount(self, amount):
+        self.__bill_amount = amount
+    def get_patient_id(self):
+        return self.__patient_id
+    def get_patient_name(self):
+        return self.__patient_name
+    def get_age(self):
+        return self.__age
+    def get_disease(self):
+        return self.__disease
+    def get_date_admitted(self):
+        return self.__date_admitted
+    def get_date_discharged(self):
+        return self.__date_discharged
+    def get_bill_amount(self):
+        return self.__bill_amount
+d = Discharge()
+# Input
+d.set_patient_id(input("Enter Patient ID: "))
+d.set_patient_name(input("Enter Patient Name: "))
+d.set_age(int(input("Enter Age: ")))
+d.set_disease(input("Enter Cause of Admission: "))
+d.set_date_admitted(input("Enter Date of Admission (DD/MM/YYYY): "))
+d.set_date_discharged(input("Enter Date of Discharge (DD/MM/YYYY): "))
+d.set_bill_amount(float(input("Enter Total Bill Amount: ")))
+# Receipt
+print("\n")
+print("=" * 45)
+print("        TRINAY HOSPITAL")
+print("        DISCHARGE RECEIPT")
+print("=" * 45)
+print("Patient ID        :", d.get_patient_id())
+print("Patient Name      :", d.get_patient_name())
+print("Age               :", d.get_age())
+print("Disease           :", d.get_disease())
+print("Date Admitted     :", d.get_date_admitted())
+print("Date Discharged   :", d.get_date_discharged())
+print("Total Bill (Rs.)  :", d.get_bill_amount())
+print("-" * 45)
+print("Patient is discharged successfully.")
+print("Thank you for choosing Trinay Hospital.")
            
 #total patient record for the day            
 #polymorphism-overloading
 print("-----------------------------------------------------")
-print("Total patient record for the day...")
+print("Total patient record for the day...(For verification of officials)")
 class entire:
     def pat(self,today):
         self.today=today
@@ -194,9 +239,33 @@ class entire:
 e=entire()
 e.pat(80,30,50)
 
+
+#Adding patients to the ward    
+#abstraction
+from abc import ABC
+class Hospital(ABC):
+    def patients(self):
+        total_patients=0
+        print("----------------------------------------------------")
+        print("Adding patients to the ward...(by the hospital staff)")
+        self.total_patients=total_patients
+        while self.total_patients<=4:
+            patient_id=input("Enter the patient ID: ")
+            self.patient_id=patient_id
+            self.total_patients+=1
+            print(f"Patient added: {self.patient_id}")
+            print(f"Total patients allowed in the ward: {self.total_patients}")
+class Ward(Hospital):
+    def patients(self):
+        super().patients()
+        print("The patient in general ward are now shifted to special ward.")
+h=Ward()
+h.patients()
+
+
 #Advertisement for the newly opening hospital
 #multilevel inheritance
-#
+#set
 class Advertisement:
     def ad1(self):
         print("**************************************************************************")
@@ -223,8 +292,7 @@ f.ad1()
 f.ad2()
 f.ad3()       
 
-#create file
-
+#creating a file
 new_hospital=open("./Child_hospital.txt","w")
 print("File is created",new_hospital.name)
 new_hospital.write(" Our new - Trinay Children's Multispeciality Hospital launching soon....")
