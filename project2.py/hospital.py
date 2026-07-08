@@ -104,14 +104,14 @@ class Treatment3(Patient):
 #read
 condition = input("Enter the condition of the patient: ")
 if condition == "Stable":
-    patient = Treatment1()
+    p = Treatment1()
 elif condition == "Moderate":
-    patient = Treatment2()
+    p = Treatment2()
 else:
-    patient = Treatment3()
+    p = Treatment3()
 
-patient.consult()
-patient.condition()
+p.consult()
+p.condition()
 
 #Giving special pass to the patients
 #list
@@ -144,7 +144,7 @@ if hos=="Yes":
         print("No changes made to the special pass.")
         print("List of things included in the special pass")
         print(special_pass)
-        print("Thank You")
+        print("Thank You","\n-------------------------------------------------")
 else:
     print("No special pass is provided for the patient.")
     print("Thank You","\n----------------------------------------------------")
@@ -191,7 +191,7 @@ class Discharge:
     def get_bill_amount(self):
         return self.__bill_amount
 d = Discharge()
-# Input
+
 d.set_patient_id(input("Enter Patient ID: "))
 d.set_patient_name(input("Enter Patient Name: "))
 d.set_age(int(input("Enter Age: ")))
@@ -213,7 +213,7 @@ print("Date Admitted     :", d.get_date_admitted())
 print("Date Discharged   :", d.get_date_discharged())
 print("Total Bill (Rs.)  :", d.get_bill_amount())
 print("-" * 45)
-print("Patient is discharged successfully.")
+print("Patient is discharged safely.")
 print("Thank you for choosing Trinay Hospital.")
            
 #total patient record for the day            
@@ -241,7 +241,7 @@ e.pat(80,30,50)
 
 
 #Adding patients to the ward    
-#abstraction
+#abstraction while loop
 from abc import ABC
 class Hospital(ABC):
     def patients(self):
